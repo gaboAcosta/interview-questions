@@ -1,5 +1,7 @@
 
-const { boldTags: boldTagsSpec } = require('../unsolved/boldTags')
+const targetDir = process.env.UNSOLVED === 'true' ? 'unsolved' : 'solved'
+const path = require('node:path')
+const { boldTags: boldTagsSpec } = require(path.resolve(path.join(targetDir, 'boldTags.js')))
 
 describe('boldened-tags', () => {
   it('Should and find a specific text', () => {

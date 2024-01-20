@@ -1,5 +1,7 @@
 
-const { checkWinner } = require('../unsolved/ticTacToe')
+const targetDir = process.env.UNSOLVED === 'true' ? 'unsolved' : 'solved'
+const path = require('node:path')
+const { checkWinner } = require(path.resolve(path.join(targetDir, 'ticTacToe.js')))
 
 describe('tikTakTokWinner', () => {
   it('should return X when center combinations are met', () => {

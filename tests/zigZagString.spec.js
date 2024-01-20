@@ -1,5 +1,7 @@
 
-const { zigZagString } = require('../unsolved/zigZagString')
+const targetDir = process.env.UNSOLVED === 'true' ? 'unsolved' : 'solved'
+const path = require('node:path')
+const { zigZagString } = require(path.resolve(path.join(targetDir, 'zigZagString.js')))
 
 describe('zigZag string', () => {
   test('It should return the same string if numRows is 1', ()  => {

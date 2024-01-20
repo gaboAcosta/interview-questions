@@ -7,9 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --watchAll",
-    "test:unsolved": "UNSOLVED=true npm run test",
-    "test:watch": "npm run test --watch"
+    "test": "jest",
+    "test:unsolved": "UNSOLVED=true jest",
+    "test:unsolved:watch": "UNSOLVED=true jest --watchAll",
+    "test:watch": "jest --watchAll"
   },
   "keywords": [],
   "author": "",

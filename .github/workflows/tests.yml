@@ -26,4 +26,4 @@ jobs:
           restore-keys: interview_questions_restore
 
       - run: npm install
-      - run: npm run tests
+      - run: npm run test

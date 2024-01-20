@@ -1,0 +1,31 @@
+
+const { validateBraces } = require('../unsolved/validateBraces')
+
+describe('validateBraces', () => {
+  it('Should return true when given valid braces', () => {
+    expect(validateBraces('(){}[]')).toEqual(true)
+    expect(validateBraces('(){[]}')).toEqual(true)
+    expect(validateBraces('{[()]}')).toEqual(true)
+    expect(validateBraces('{[()]}()')).toEqual(true)
+    expect(validateBraces('{[()]}()[]')).toEqual(true)
+    expect(validateBraces('[]{}{[()]}()[]')).toEqual(true)
+    expect(validateBraces('([]{}){[()]}()[]')).toEqual(true)
+    expect(validateBraces('([]{}){}[()]{}()[]')).toEqual(true)
+  })
+  it('Should return false when given invalid braces', () => {
+    expect(validateBraces(')')).toEqual(false)
+    expect(validateBraces('}')).toEqual(false)
+    expect(validateBraces(']')).toEqual(false)
+    expect(validateBraces(')[]')).toEqual(false)
+    expect(validateBraces('()){)[]}')).toEqual(false)
+    expect(validateBraces('{[{()]}()')).toEqual(false)
+    expect(validateBraces('{[()]}()[}]')).toEqual(false)
+    expect(validateBraces('[]{}{[([)]}()[]')).toEqual(false)
+    expect(validateBraces('([]{}){[()]]}()[]')).toEqual(false)
+    expect(validateBraces('([]{}){[(){]}()[]')).toEqual(false)
+    expect(validateBraces('([(]{}){[()]}()[]')).toEqual(false)
+    expect(validateBraces('([]{}){[(){]}()[]')).toEqual(false)
+    expect(validateBraces('([]{}){[()]}()[](')).toEqual(false)
+    expect(validateBraces('([]{}){[()]}()[]((')).toEqual(false)
+  })
+})

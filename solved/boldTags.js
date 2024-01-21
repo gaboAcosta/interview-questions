@@ -28,7 +28,6 @@ function mergeIntervals (intervals) {
     return -1
   })
   let currStart, currEnd
-  let intervalOpen = true
   for(const interval of sortedIntervals) {
     if(currStart === undefined && currEnd === undefined) {
       currStart = interval.start
@@ -36,7 +35,6 @@ function mergeIntervals (intervals) {
     } else {
       if(interval.start <= currEnd) {
         currEnd = interval.end
-        intervalOpen = true
       } else {
         mergedIntervals.push({ start: currStart, end: currEnd })
         currStart = interval.start

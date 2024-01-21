@@ -4,11 +4,11 @@ const path = require('node:path')
 const { oneDateStockTrade } = require(path.resolve(path.join(targetDir, 'oneDateStockTrade.js')))
 
 describe('oneDateStockTrade', () => {
-  it('Should return -1 if theres no ideal trade pair', () => {
+  it('Should return 0 if theres no ideal trade pair', () => {
     const result = oneDateStockTrade([8])
     expect(result).toEqual(0)
   })
-  it('Should return -1 if theres no ideal trade pair', () => {
+  it('Should return 0 if theres no ideal trade pair', () => {
     const result = oneDateStockTrade([8,7,6,5])
     expect(result).toEqual(0)
   })

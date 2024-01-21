@@ -1,13 +1,5 @@
 
-function removeElement (nums, val) {
-  let k = 0
-  for(const num of nums) {
-    if(num !== val) {
-      nums[k++] = num
-    }
-  }
-  return k
-}
+function removeElement (nums, val) {}
 
 module.exports = {
   removeElement

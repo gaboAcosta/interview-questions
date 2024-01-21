@@ -1,0 +1,24 @@
+
+const targetDir = process.env.UNSOLVED === 'true' ? 'unsolved' : 'solved'
+const path = require('node:path')
+const { hIndex } = require(path.resolve(path.join(targetDir, 'hIndex.js')))
+
+describe('hIndex problem', () => {
+  it('Should return the h number of papers cited at least h times', () => {
+    // In this case, there's 3 papers rated 3 or more
+    expect(hIndex([3,0,6,1,5])).toEqual(3)
+  })
+  it('Should be able to jump when the elements are long enough', () => {
+    // 5 is the highest number that has at least 5 papers rated 5 or more
+    expect(hIndex([1,2,1,3,2,5,10,12,13,14])).toEqual(5)
+  })
+  it('Should not be able to jump when the elements are not long enough', () => {
+    expect(hIndex([1,3,1])).toEqual(1)
+  })
+  it('Should return the min number of papers as result', () => {
+    expect(hIndex([11,15])).toEqual(2)
+  })
+  it('Should return the min number of papers as result', () => {
+    expect(hIndex([100])).toEqual(1)
+  })
+})

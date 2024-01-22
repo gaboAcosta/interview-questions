@@ -5,10 +5,11 @@ const { validateBraces } = require(path.resolve(path.join(targetDir, 'validateBr
 
 describe('validateBraces', () => {
   it('Should return true when given valid braces', () => {
+    expect(validateBraces('()')).toEqual(true)
     expect(validateBraces('(){}[]')).toEqual(true)
+    expect(validateBraces('{[()]}()')).toEqual(true)
     expect(validateBraces('(){[]}')).toEqual(true)
     expect(validateBraces('{[()]}')).toEqual(true)
-    expect(validateBraces('{[()]}()')).toEqual(true)
     expect(validateBraces('{[()]}()[]')).toEqual(true)
     expect(validateBraces('[]{}{[()]}()[]')).toEqual(true)
     expect(validateBraces('([]{}){[()]}()[]')).toEqual(true)

@@ -1,39 +1,44 @@
 
-
-const openingKeys = {
-  '(': true,
-  '[': true,
-  '{': true
-}
-
-const openingPairs = {
-  ')': '(',
-  ']': '[',
-  '}': '{'
+const symbols = {
+  '(': ')',
+  '[': ']',
+  '{': '}'
 }
 
 function validateBraces(s) {
-  if(s.length === 0) return true
   const firstChar = s[0]
-  if(openingKeys[firstChar] !== true) return false
-  let closingIndex
+  const closeTag = symbols[firstChar]
+  if(closeTag === undefined) return false
+
+  let closeIndex, openCounts = 1
   for(let i = 1; i < s.length; i++) {
-    const currentChar = s[i]
-    if(openingKeys[currentChar] === true) continue
-    const currentOpeningPair = openingPairs[currentChar]
-    if(currentOpeningPair === firstChar) {
-      closingIndex = i
-      break
+    if(s[i] === firstChar) {
+      openCounts++
+    } else {
+      if(s[i] === closeTag) {
+        if(openCounts === 1) {
+          closeIndex = i
+          break
+        } else {
+          openCounts--
+        }
+      }
     }
   }
-  if(closingIndex === undefined) {
-    return false
-  } else {
-    if(closingIndex !== 1) {
-      const currentGroupvalidateBraces = validateBraces(s.slice(1, closingIndex))
-      if(currentGroupvalidateBraces !== true) return false
+  if(closeIndex === undefined) return false
+  if(closeIndex === 1) {
+    if(s.length === 2) {
+      return true
+    } else {
+      return validateBraces(s.slice(2))
     }
-    return validateBraces(s.slice(closingIndex + 1))
+  } else {
+    const isValidSegment = validateBraces(s.slice(1, closeIndex))
+    if(closeIndex === s.length - 1) {
+      return isValidSegment
+    } else {
+      return isValidSegment && validateBraces(s.slice(closeIndex + 1))
+    }
   }
 }
 

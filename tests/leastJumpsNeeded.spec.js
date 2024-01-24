@@ -3,7 +3,7 @@ const targetDir = process.env.UNSOLVED === 'true' ? 'unsolved' : 'solved'
 const path = require('node:path')
 const { leastJumpsNeeded } = require(path.resolve(path.join(targetDir, 'leastJumpsNeeded.js')))
 
-describe('leastJumpsNeeded problem', () => {
+describe('calculate the least number of jumps needed to get to n.length -1', () => {
   it('Should complete in two jumps', () => {
     expect(leastJumpsNeeded([2,3,1,1,4])).toEqual(2)
   })

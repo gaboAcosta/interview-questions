@@ -29,9 +29,9 @@ describe('boldened-tags', () => {
     expect(boldTagsSpec(str, tags)).toEqual(expectedResult)
   })
   it('Should merge intervals where matching tags collide', () => {
-    const str = 'abcxyz123qweabc456zdaxyz'
+    const str = 'qweqweabcxyz123qweabc456zdaxyzzxczxc'
     const tags = ['abc', 'xyz', 'bcx']
-    const expectedResult = '<b>abcxyz</b>123qwe<b>abc</b>456zda<b>xyz</b>'
+    const expectedResult = 'qweqwe<b>abcxyz</b>123qwe<b>abc</b>456zda<b>xyz</b>zxczxc'
     expect(boldTagsSpec(str, tags)).toEqual(expectedResult)
   })
 })

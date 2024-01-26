@@ -1,3 +1,10 @@
+/**
+ * Implement a list that stores, searches and finds elements in O(1) time
+ *
+ * Also implement a getRandom number
+ *
+ * @type {string}
+ */
 
 const targetDir = process.env.UNSOLVED === 'true' ? 'unsolved' : 'solved'
 const path = require('node:path')
